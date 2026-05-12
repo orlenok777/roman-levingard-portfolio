@@ -199,6 +199,27 @@ footer a { color:rgba(255,255,255,0.4); text-decoration:none; }
 
 .fade-up { opacity:0; transform:translateY(22px); transition:opacity 0.7s,transform 0.7s; }
 .fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* Education / Diplomas */
+.diploma-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:28px; margin-top:40px; }
+.diploma-card { margin:0; cursor:pointer; background:var(--white); border:1px solid rgba(139,105,20,0.15); transition:transform .4s, box-shadow .4s, border-color .4s; overflow:hidden; }
+.diploma-card:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,0.12); border-color:var(--gold); }
+.diploma-card img { width:100%; height:280px; object-fit:cover; object-position:top center; display:block; background:#f4ede0; }
+.diploma-card figcaption { padding:20px 22px 22px; }
+.diploma-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:#222; margin-bottom:6px; line-height:1.3; }
+.diploma-meta { font-size:12px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); }
+
+/* Lightbox */
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; padding:40px; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90%; max-height:90vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.6); }
+.lightbox-close { position:absolute; top:20px; right:30px; color:#fff; font-size:42px; cursor:pointer; line-height:1; user-select:none; transition:color .2s; }
+.lightbox-close:hover { color:var(--gold-light); }
+.lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:38px; cursor:pointer; padding:20px; user-select:none; transition:color .2s; }
+.lightbox-nav:hover { color:var(--gold-light); }
+.lightbox-prev { left:20px; }
+.lightbox-next { right:20px; }
+@media(max-width:600px){ .lightbox-nav { font-size:28px; padding:12px; } .lightbox-close { font-size:34px; top:14px; right:18px; } }
 </style>
 
 </head>
@@ -221,6 +242,7 @@ footer a { color:rgba(255,255,255,0.4); text-decoration:none; }
     <li><a href="#media" data-i18n="nav_media">Media</a></li>
     <li><a href="#impact" data-i18n="nav_impact">Impact</a></li>
     <li><a href="#criteria" data-i18n="nav_o1">O-1 Visa</a></li>
+    <li><a href="#education" data-i18n="nav_edu">Education</a></li>
     <li><a href="business-case.html" style="color:var(--gold);font-weight:600;" data-i18n="nav_business">Business Case</a></li>
     <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
   </ul>
@@ -495,6 +517,76 @@ footer a { color:rgba(255,255,255,0.4); text-decoration:none; }
   </div>
 </section>
 
+<!-- EDUCATION & DIPLOMAS -->
+
+<section id="education" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-label fade-up" data-i18n="edu_label">Education & Certifications</div>
+    <h2 class="section-title fade-up" data-i18n="edu_title">Verified academic background<br><em>across health, nutrition & AI</em></h2>
+    <p class="fade-up" style="max-width:720px;margin-bottom:50px;" data-i18n="edu_intro">Over 7,000 academic hours across naturopathy, medical massage, manual therapy, nutrition, and AI-integrated wellness practice. All diplomas issued by accredited institutions in Israel.</p>
+
+    <div class="diploma-grid">
+      <figure class="diploma-card fade-up" onclick="openLightbox(0)">
+        <img src="diplomas/diploma-5-naturopathy-doctor.jpg" alt="Naturopathy Doctor diploma" loading="lazy">
+        <figcaption>
+          <div class="diploma-title" data-i18n="edu_d5_t">Naturopathy Doctor (N.D.)</div>
+          <div class="diploma-meta" data-i18n="edu_d5_m">Holistic Health Practitioner · Tianshi Academy · 3986 hrs · 2008</div>
+        </figcaption>
+      </figure>
+      <figure class="diploma-card fade-up" onclick="openLightbox(1)">
+        <img src="diplomas/diploma-3-acupuncture-program.jpg" alt="Acupuncture program transcript" loading="lazy">
+        <figcaption>
+          <div class="diploma-title" data-i18n="edu_d3_t">Acupuncture Diploma Program</div>
+          <div class="diploma-meta" data-i18n="edu_d3_m">Tianshi Academy · Full transcript · 3986 hrs · 2008</div>
+        </figcaption>
+      </figure>
+      <figure class="diploma-card fade-up" onclick="openLightbox(2)">
+        <img src="diplomas/diploma-4-nutritional-consultant.jpg" alt="Nutritional Consultant diploma" loading="lazy">
+        <figcaption>
+          <div class="diploma-title" data-i18n="edu_d4_t">Nutritional Consultant</div>
+          <div class="diploma-meta" data-i18n="edu_d4_m">Tianshi Academy · 1820 hrs · 2009</div>
+        </figcaption>
+      </figure>
+      <figure class="diploma-card fade-up" onclick="openLightbox(3)">
+        <img src="diplomas/diploma-2-medical-massage.jpg" alt="Medical Massage diploma" loading="lazy">
+        <figcaption>
+          <div class="diploma-title" data-i18n="edu_d2_t">Medical Massage with Manual Therapy</div>
+          <div class="diploma-meta" data-i18n="edu_d2_m">Blue Sky Med School · 980 hrs · 2021</div>
+        </figcaption>
+      </figure>
+      <figure class="diploma-card fade-up" onclick="openLightbox(4)">
+        <img src="diplomas/diploma-1-swedish-massage.jpg" alt="Classic Swedish Massage diploma" loading="lazy">
+        <figcaption>
+          <div class="diploma-title" data-i18n="edu_d1_t">Classic Swedish Massage</div>
+          <div class="diploma-meta" data-i18n="edu_d1_m">Blue Sky Med School · 262 hrs · 2021</div>
+        </figcaption>
+      </figure>
+      <figure class="diploma-card fade-up" onclick="openLightbox(5)">
+        <img src="diplomas/diploma-7-vrt-ai-hrv-ru.jpg" alt="VRT AI HRV certificate" loading="lazy">
+        <figcaption>
+          <div class="diploma-title" data-i18n="edu_d7_t">VRT & AI & HRV</div>
+          <div class="diploma-meta" data-i18n="edu_d7_m">Intellect Academy · AVITAR · 2026</div>
+        </figcaption>
+      </figure>
+      <figure class="diploma-card fade-up" onclick="openLightbox(6)">
+        <img src="diplomas/diploma-6-vrt-ai-hrv-he.jpg" alt="VRT AI HRV certificate Hebrew" loading="lazy">
+        <figcaption>
+          <div class="diploma-title" data-i18n="edu_d6_t">VRT & AI & HRV (Hebrew)</div>
+          <div class="diploma-meta" data-i18n="edu_d6_m">Intellect Academy · AVITAR · 28 hrs · 2026</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-close" onclick="closeLightbox(event,true)">&times;</span>
+  <span class="lightbox-nav lightbox-prev" onclick="navLightbox(event,-1)">&#10094;</span>
+  <img id="lightbox-img" src="" alt="">
+  <span class="lightbox-nav lightbox-next" onclick="navLightbox(event,1)">&#10095;</span>
+</div>
+
 <!-- ADDITIONAL ACHIEVEMENTS -->
 
 <section id="achievements">
@@ -566,7 +658,18 @@ footer a { color:rgba(255,255,255,0.4); text-decoration:none; }
 const i18n = {
   en: {
     dir:"ltr",
-    nav_about:"About", nav_media:"Media", nav_impact:"Impact", nav_o1:"O-1 Visa", nav_business:"Business Case", nav_contact:"Contact", nav_cta:"Get in Touch",
+    nav_about:"About", nav_media:"Media", nav_impact:"Impact", nav_o1:"O-1 Visa", nav_edu:"Education", nav_business:"Business Case", nav_contact:"Contact", nav_cta:"Get in Touch",
+    edu_label:"Education & Certifications",
+    edu_title:"Verified academic background<br><em>across health, nutrition & AI</em>",
+    edu_intro:"Over 7,000 academic hours across naturopathy, medical massage, manual therapy, nutrition, and AI-integrated wellness practice. All diplomas issued by accredited institutions in Israel.",
+    edu_d5_t:"Naturopathy Doctor (N.D.)", edu_d5_m:"Holistic Health Practitioner · Tianshi Academy · 3986 hrs · 2008",
+    edu_d3_t:"Acupuncture Diploma Program", edu_d3_m:"Tianshi Academy · Full transcript · 3986 hrs · 2008",
+    edu_d4_t:"Nutritional Consultant", edu_d4_m:"Tianshi Academy · 1820 hrs · 2009",
+    edu_d2_t:"Medical Massage with Manual Therapy", edu_d2_m:"Blue Sky Med School · 980 hrs · 2021",
+    edu_d1_t:"Classic Swedish Massage", edu_d1_m:"Blue Sky Med School · 262 hrs · 2021",
+    edu_d7_t:"VRT & AI & HRV", edu_d7_m:"Intellect Academy · AVITAR · 2026",
+    edu_d6_t:"VRT & AI & HRV (Hebrew)", edu_d6_m:"Intellect Academy · AVITAR · 28 hrs · 2026",
+    
     hero_eyebrow:"International Media Creator · Israel → USA",
     hero_desc:"Media creator, AI-driven content innovator, and social entrepreneur building communities across borders — one story at a time.",
     stat1:"Followers", stat2:"Monthly Views", stat3:"Years Active",
@@ -630,7 +733,18 @@ const i18n = {
   },
   ru: {
     dir:"ltr",
-    nav_about:"Обо мне", nav_media:"Медиа", nav_impact:"Проекты", nav_o1:"Виза O-1", nav_business:"Business Case", nav_contact:"Контакты", nav_cta:"Написать",
+    nav_about:"Обо мне", nav_media:"Медиа", nav_impact:"Проекты", nav_o1:"Виза O-1", nav_edu:"Образование", nav_business:"Business Case", nav_contact:"Контакты", nav_cta:"Написать",
+    edu_label:"Образование и сертификации",
+    edu_title:"Подтверждённая академическая база<br><em>в здоровье, питании и AI</em>",
+    edu_intro:"Более 7000 академических часов по натуропатии, медицинскому массажу, мануальной терапии, нутрициологии и AI-интегрированным практикам веллнеса. Все дипломы выданы аккредитованными учреждениями В Израиле.",
+    edu_d5_t:"Доктор натуропатии (N.D.)", edu_d5_m:"Holistic Health Practitioner · Академия Tianshi · 3986 ч · 2008",
+    edu_d3_t:"Программа акупунктуры", edu_d3_m:"Академия Tianshi · Полная ведомость · 3986 ч · 2008",
+    edu_d4_t:"Консультант по питанию", edu_d4_m:"Академия Tianshi · 1820 ч · 2009",
+    edu_d2_t:"Медицинский массаж и мануальная терапия", edu_d2_m:"Blue Sky Med School · 980 ч · 2021",
+    edu_d1_t:"Классический шведский массаж", edu_d1_m:"Blue Sky Med School · 262 ч · 2021",
+    edu_d7_t:"VRT & AI & HRV", edu_d7_m:"Интелакт Академия · AVITAR · 2026",
+    edu_d6_t:"VRT & AI & HRV (иврит)", edu_d6_m:"Интелакт Академия · AVITAR · 28 ч · 2026",
+    
     hero_eyebrow:"Международный медиа-криэйтор · Израиль → США",
     hero_desc:"Медиа-криэйтор, AI-контент инноватор и социальный предприниматель — строю сообщества через границы одну историю за раз.",
     stat1:"Подписчиков", stat2:"Просмотров в месяц", stat3:"Лет опыта",
@@ -694,7 +808,18 @@ const i18n = {
   },
   he: {
     dir:"rtl",
-    nav_about:"אודות", nav_media:"מדיה", nav_impact:"השפעה", nav_o1:"ויזת O-1", nav_business:"Business Case", nav_contact:"צור קשר", nav_cta:"צור קשר",
+    nav_about:"אודות", nav_media:"מדיה", nav_impact:"השפעה", nav_o1:"ויזת O-1", nav_edu:"השכלה", nav_business:"Business Case", nav_contact:"צור קשר", nav_cta:"צור קשר",
+    edu_label:"השכלה ותעודות",
+    edu_title:"רקע אקדמי מאומת<br><em>בבריאות, תזונה ו-AI</em>",
+    edu_intro:"מעל 7,000 שעות אקדמיות בנטורופתיה, עיסוי רפואי, טיפול ידני, תזונה והשתלמות בריאות משולבת AI. כל התעודות הונפקו על ידי מוסדות מוכרים בישראל.",
+    edu_d5_t:"רופא נטורופת (N.D.)", edu_d5_m:"Holistic Health Practitioner · אקדמיה Tianshi · 3986 שעות · 2008",
+    edu_d3_t:"תוכנית דיפלומה בדיקור", edu_d3_m:"אקדמיה Tianshi · גיליון ציונים מלא · 3986 שעות · 2008",
+    edu_d4_t:"יועץ תזונה", edu_d4_m:"אקדמיה Tianshi · 1820 שעות · 2009",
+    edu_d2_t:"עיסוי רפואי וטיפול ידני", edu_d2_m:"Blue Sky Med School · 980 שעות · 2021",
+    edu_d1_t:"עיסוי שוודי קלאסי", edu_d1_m:"Blue Sky Med School · 262 שעות · 2021",
+    edu_d7_t:"VRT & AI & HRV", edu_d7_m:"אינטלקט אקדמון · AVITAR · 2026",
+    edu_d6_t:"VRT & AI & HRV (עברית)", edu_d6_m:"אינטלקט אקדמון · AVITAR · 28 שעות · 2026",
+    
     hero_eyebrow:"יוצר מדיה בינלאומי · ישראל → ארה״ב",
     hero_desc:"יוצר תוכן, חדשן AI ויזם חברתי הבונה קהילות מעבר לגבולות — סיפור אחד בכל פעם.",
     stat1:"עוקבים", stat2:"צפיות בחודש", stat3:"שנות ניסיון",
@@ -775,6 +900,41 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold:0.08 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Diploma lightbox
+const diplomaImages = [
+  'diplomas/diploma-5-naturopathy-doctor.jpg',
+  'diplomas/diploma-3-acupuncture-program.jpg',
+  'diplomas/diploma-4-nutritional-consultant.jpg',
+  'diplomas/diploma-2-medical-massage.jpg',
+  'diplomas/diploma-1-swedish-massage.jpg',
+  'diplomas/diploma-7-vrt-ai-hrv-ru.jpg',
+  'diplomas/diploma-6-vrt-ai-hrv-he.jpg'
+];
+let currentDiploma = 0;
+function openLightbox(idx){
+  currentDiploma = idx;
+  document.getElementById('lightbox-img').src = diplomaImages[idx];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e, force){
+  if (force || e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function navLightbox(e, dir){
+  e.stopPropagation();
+  currentDiploma = (currentDiploma + dir + diplomaImages.length) % diplomaImages.length;
+  document.getElementById('lightbox-img').src = diplomaImages[currentDiploma];
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox(null, true);
+  if (e.key === 'ArrowLeft') navLightbox({stopPropagation:()=>{}}, -1);
+  if (e.key === 'ArrowRight') navLightbox({stopPropagation:()=>{}}, 1);
+});
 </script>
 
 </body>
